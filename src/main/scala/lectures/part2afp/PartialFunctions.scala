@@ -46,5 +46,30 @@ object PartialFunctions extends App {
 
   /**
    * Note: PF can only have ONE parameter type
+   *
+   * 1- construct a PF instance (anonymous class
+   * 2 - dumb chatbot as a PF: write thing in the console and chatbot will reply with only a limited number of potential answers
    */
+
+  val aManualFussyFunction = new PartialFunction[Int, Int] {
+    override def apply(x: Int): Int = x match {
+      case 1 => 42
+      case 2 => 65
+      case 3 => 999
+    }
+
+    override def isDefinedAt(x: Int): Boolean = x == 1 || x == 2 || x == 3
+  }
+
+  val chatbot: PartialFunction[String,String] = {
+    case "hello" => "Hi, my name is chatbot"
+    case "goodbye" => "goodbye, have a nice day"
+    case "call me maybe" => "please, call me"
+  }
+  // implement chatbot with scala.io.Source.stdin.getLines().foreach(line => println("you said: " + line))
+
+  scala.io.Source.stdin.getLines()
+    .map(chatbot)
+    .map(s => s"chatbot say: $s")
+    .foreach(println)
 }
