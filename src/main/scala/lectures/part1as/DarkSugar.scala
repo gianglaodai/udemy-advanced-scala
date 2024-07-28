@@ -16,6 +16,8 @@ object DarkSugar extends App {
   List(1, 2, 3).map { x =>
     x + 1
   }
+  
+  List(1,2,3) ++ List(1,2,3)
 
   // syntax sugar #2: single abstract method
   trait Action {
