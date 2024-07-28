@@ -75,7 +75,7 @@ class PropertyBasedSet[A](property: A => Boolean) extends MySet[A] {
 
 	override def unary_! : MySet[A] = new PropertyBasedSet[A](x => !property(x))
 
-	def politelyFail = throw new IllegalArgumentException("Really deep rabbit hole!")
+	def politelyFail: Nothing = throw new IllegalArgumentException("Really deep rabbit hole!")
 }
 
 class NonEmptySet[A](head: A, tail: MySet[A]) extends MySet[A] {
