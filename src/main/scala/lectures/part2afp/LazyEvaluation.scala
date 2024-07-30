@@ -65,27 +65,6 @@ object LazyEvaluation extends App {
 	} yield a + 1
 	List(1, 2, 3).withFilter(_ % 2 == 0).map(_ + 1)
 
-	/**
-	 * Exercise: implement a lazily evaluated, singly linked STREAM of elements
-	 */
-	abstract class MyStream[+A] {
-		def isEmpty: Boolean
-		def head: A
-		def tail: MyStream[A]
 
-		def #::[B >:A] (el: B):MyStream[B] // prepend operator
-		def ++[B >: A](stream: MyStream[B]): MyStream[B] // concat two streams
 
-		def foreach(f: A => Unit): Unit
-		def map[B](f: A => B): MyStream[B]
-		def flatMap[B](f: A => MyStream[B]): MyStream[B]
-		def filter(predicate: A => Boolean): MyStream[A]
-		
-		def take(n: Int): MyStream[A] // takes the first n elements out of this stream
-		def takeAsList(n: Int): List[A]
-	}
-	
-	object MyStream {
-		def from[A](start: A)(generator: A => A): MyStream[A] = ???
-	}
 }
