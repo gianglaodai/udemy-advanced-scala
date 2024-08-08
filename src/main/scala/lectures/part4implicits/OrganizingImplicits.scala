@@ -1,4 +1,4 @@
-package lectures.part3concurrency
+package lectures.part4implicits
 
 object OrganizingImplicits extends App {
 	println(List(1, 4, 5, 3, 2).sorted)
@@ -40,7 +40,7 @@ object OrganizingImplicits extends App {
 		implicit val ageOrdering: Ordering[Person] = Ordering.fromLessThan((p1, p2) => p1.age < p2.age)
 	}
 
-	import AgeOrdering._
+	import AgeOrdering.*
 
 	println(persons.sorted)
 
